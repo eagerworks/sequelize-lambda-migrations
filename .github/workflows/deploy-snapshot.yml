@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-tests:
-    uses: ./.github/workflows/test
+    uses: ./.github/workflows/test.yml
 
   deploy-snapshot:
     name: Snapshot deploy
