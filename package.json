@@ -1,5 +1,5 @@
 {
-  "name": "sequelize-lambda-migrations",
+  "name": "@eagerworks/sequelize-lambda-migrations",
   "version": "1.0.0",
   "description": "Package to manage sequelize migrations on serverless",
   "main": "dist/index.js",

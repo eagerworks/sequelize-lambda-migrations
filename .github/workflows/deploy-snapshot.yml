@@ -33,7 +33,9 @@ jobs:
       - name: Generate build number
         uses: einaregilsson/build-number@v3
         with:
-          token: ${{secrets.github_token}}
+          token: ${{secrets.GITHUB_TOKEN}}
 
       - name: Create snapshot
         run: npx npm-snapshot $BUILD_NUMBER
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
