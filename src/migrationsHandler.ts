@@ -61,12 +61,26 @@ export class MigrationsHandler {
   }
 
   public async rollback() {
+    const executed = await this.umzug.executed();
+
+    if (executed.length === 0) {
+      this.sequelize.close();
+      return 'No executed migrations to rollback';
+    }
+
     const migration = await this.umzug.down();
     this.sequelize.close();
     return `Succesfully rollbacked ${migration?.[0]?.name}`;
   }
 
   public async reset() {
+    const executed = await this.umzug.executed();
+
+    if (executed.length === 0) {
+      this.sequelize.close();
+      return 'No executed migrations to rollback';
+    }
+
     const migrations = await this.umzug.down({ to: 0 as const });
     const migrationNames = migrations.map((migration) => migration.name);
     this.sequelize.close();
