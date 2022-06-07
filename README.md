@@ -10,7 +10,7 @@ In order to use the package first set up the following environment variables:
 - `DB_PORT`: database port
 - `DB_DIALECT`: database dialect (postgress/mysql)
 - `DB_HOST`: database host
-- `MIGRATIONS_PATH`: glob to the migrations files (e.g. `src/db/migrations/*.js`)
+- `MIGRATIONS_PATH`: glob to the migration files (e.g. `src/db/migrations/*.js`)
 
 Then import the lambda functions from the package and use it directly on your serverless file.
 
