@@ -6,7 +6,7 @@ export const createHandler =
     try {
       context.callbackWaitsForEmptyEventLoop = false;
 
-      const handler = new MigrationsHandler(process.env.MIGRATIONS_PATH);
+      const handler = new MigrationsHandler(process.env.MIGRATIONS_GLOB);
       const response = await handler[handlerName]();
 
       callback(null, response);
