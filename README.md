@@ -4,8 +4,8 @@
 
 In order to use the package first set up the following environment variables:
 
-- `DB_NAME`: name of the database
-- `DB_USERNAME`: username of the database
+- `DB_NAME`: database name
+- `DB_USERNAME`: database username
 - `DB_PASSWORD`: database password
 - `DB_PORT`: database port
 - `DB_DIALECT`: database dialect (postgress/mysql)
