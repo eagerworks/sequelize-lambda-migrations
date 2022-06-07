@@ -24,6 +24,8 @@ export class MigrationsHandler {
       migrations: {
         glob: migrationsGlob,
         resolve: ({ name, path, context }) => {
+          // There is not a way to use import syncronously, so we need to use require.
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
           const { up, down } = require(path);
           return {
             name,
