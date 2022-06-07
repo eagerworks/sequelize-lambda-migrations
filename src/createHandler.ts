@@ -1,8 +1,8 @@
 import { MigrationsHandler } from './migrationsHandler';
 import { Context, Callback } from 'aws-lambda';
 
-export const createHandler = (handlerName: string) => {
-  return async (_: any, context: Context, callback: Callback) => {
+export const createHandler =
+  (handlerName: string) => async (_: any, context: Context, callback: Callback) => {
     try {
       context.callbackWaitsForEmptyEventLoop = false;
 
@@ -15,4 +15,3 @@ export const createHandler = (handlerName: string) => {
       callback(error);
     }
   };
-};
