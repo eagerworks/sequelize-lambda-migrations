@@ -32,6 +32,6 @@ jobs:
       - name: Create snapshot
         run: |
           npx npm-snapshot ${GITHUB_RUN_NUMBER}
-          npm publish --access public --tag next
+          npm publish --access public --tag next --force
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
