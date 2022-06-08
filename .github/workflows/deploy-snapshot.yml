@@ -30,12 +30,9 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Generate build number
-        uses: einaregilsson/build-number@v3
-        with:
-          token: ${{secrets.GITHUB_TOKEN}}
-
       - name: Create snapshot
-        run: npx npm-snapshot $BUILD_NUMBER
+        run: |
+          npx npm-snapshot ${GITHUB_RUN_NUMBER}
+          npm publish --access public --tag latest
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
