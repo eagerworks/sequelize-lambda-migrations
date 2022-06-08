@@ -22,20 +22,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 14.19.3
-          cache: npm
-
+          registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: npm ci
 
       - name: Build
         run: npm run build
 
-      - name: Generate build number
-        uses: einaregilsson/build-number@v3
-        with:
-          token: ${{secrets.GITHUB_TOKEN}}
-
       - name: Create snapshot
-        run: npx npm-snapshot $BUILD_NUMBER
+        run: |
+          npx npm-snapshot ${GITHUB_RUN_NUMBER}
+          npm publish --access public --tag next --force
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
