@@ -11,7 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eagerworks/serverless-sequelize-migrations.git"
+    "url": "git+https://github.com/eagerworks/sequelize-lambda-migrations.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "author": "eagerWorks",
   "license": "MIT",
