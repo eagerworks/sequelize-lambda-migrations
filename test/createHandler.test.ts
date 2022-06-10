@@ -23,14 +23,20 @@ describe('Tests for createHandler', () => {
     const handler = createHandler('migrate');
     expect(handler).toBeDefined();
 
-    jest
-      .spyOn(MigrationsHandler.prototype, 'migrate')
-      .mockReturnValue(Promise.resolve('Succesfully applied 2 migrations:\ntest1\ntest2'));
+    jest.spyOn(MigrationsHandler.prototype, 'migrate').mockReturnValue(
+      Promise.resolve({
+        message: 'Succesfully applied 2 migrations',
+        migrations: ['test1', 'test2'],
+      }),
+    );
 
     const callback = jest.fn();
 
     await handler({}, dummyContext, callback);
-    expect(callback).toHaveBeenCalledWith(null, 'Succesfully applied 2 migrations:\ntest1\ntest2');
+    expect(callback).toHaveBeenCalledWith(null, {
+      message: 'Succesfully applied 2 migrations',
+      migrations: ['test1', 'test2'],
+    });
   });
 
   it('should return the handler and throw an error', async () => {
